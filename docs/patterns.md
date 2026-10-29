@@ -38,7 +38,7 @@ v1(커밋 `928d97d`)은 간병비 조정 기준으로 작성했다. v2는 같은
 | 금액의 의미 | 라벨 예 | 강조 역할 | 토큰 |
 |---|---|---|---|
 | 예상 결제·적용·환불 예정 등 사용자가 받거나 낼 최종 금액 | ‘예상 결제 금액’, ‘환불 예정액’ | accent | `color.text.accent` |
-| 위약금 발생 표시와 위약금 금액 | ‘위약금 발생’, ‘위약금’ | negative | 사용자 지정 `color-semantic-status-negative` (값 미확인, design-system 참조) |
+| 위약금 발생 표시와 위약금 금액 | ‘위약금 발생’, ‘위약금’ | negative | 사용자 지정 `color-semantic-status-negative` (= 실제 `palette.error.main`, design-system 참조) |
 | 위약금 없음 등 해당 금액이 없음 | ‘위약금 없음’ 또는 금액 자리에 ‘없음’ | neutral | `color.text.primary` |
 | 일반 상세 항목 | 항목명 | default | `color.text.primary` |
 

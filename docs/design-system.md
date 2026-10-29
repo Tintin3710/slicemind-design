@@ -32,7 +32,7 @@
 | color.text.secondary | #60656F | colors.textSecondary `text-gray-600` | #4B5563 | 실제 값 |
 | color.text.accent / action.primary | #0066FF | colors.primary / button.primary | #0066FF | 일치 |
 | color.text.critical | #C42A30(제안값) | 대응 없음 | — | **사용 중단.** 역할을 아래 status negative로 대체 |
-| (사용자 지정) color-semantic-status-negative | — | 이 이름의 정의 없음. 가장 가까운 정의는 `theme.ts` `palette.error.main` | #EF4444 | **값 미확인.** CSS 변수 `--color-semantic-status-negative`(`src/app/globals.css`)에 임시 후보로 넣음. 정의가 확인되면 이 한 줄만 교체 |
+| (사용자 지정) color-semantic-status-negative | — | `theme.ts` `palette.error.main` (같은 이름의 정의는 없음) | #EF4444 | **2026-10-29 사용자(디자이너) 지정으로 대응 확정.** CSS 변수 `--color-semantic-status-negative`(`src/app/globals.css`). 흰 배경 대비 3.76:1. 큰 금액 글자(3:1)는 충족, 14px ‘위약금 발생’ 배지 글자는 4.5:1 미달이며 2026-10-29 사용자가 수용한 예외 |
 | (역할) neutral ‘없음’ | — | colors.textPrimary / grayBorder | #111827 / #E5E7EB | 실제 값 |
 | color.text.onAction | #FFFFFF | button.primary `text-white` | #FFFFFF | 일치 |
 | color.surface.default | #FFFFFF | container.content `bg-white` | #FFFFFF | 일치 |
