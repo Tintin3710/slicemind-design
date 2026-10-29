@@ -1,0 +1,106 @@
+[
+  {
+    "name": "import @/design-system/AmountSummary",
+    "pass": true
+  },
+  {
+    "name": "import @/design-system/StatusBadge",
+    "pass": true
+  },
+  {
+    "name": "import @/shared/lib/format-krw",
+    "pass": true
+  },
+  {
+    "name": "import @/design-system/token-bridge",
+    "pass": true
+  },
+  {
+    "name": "import @/features/cancellation/calculate",
+    "pass": true
+  },
+  {
+    "name": "PriceChangeRow 미사용",
+    "pass": true
+  },
+  {
+    "name": "화면에 직접 색상값 없음",
+    "pass": true
+  },
+  {
+    "name": "화면에서 금액 산술 없음",
+    "pass": true
+  },
+  {
+    "name": "순서: 조건 < 근거 < 환불 내역 < 환불 예정액",
+    "pass": true,
+    "detail": "203.5,404.5,629.5,768.5"
+  },
+  {
+    "name": "적용 조건: 18시간 전",
+    "pass": true
+  },
+  {
+    "name": "적용 조건: 위약금 발생 배지",
+    "pass": true
+  },
+  {
+    "name": "적용 조건: 신청 제한 7일",
+    "pass": true
+  },
+  {
+    "name": "위약금 계산 기준액 2,600,000원",
+    "pass": true
+  },
+  {
+    "name": "위약금 비율 2%",
+    "pass": true
+  },
+  {
+    "name": "위약금 52,000 · 라벨 · negative",
+    "pass": true
+  },
+  {
+    "name": "결제 금액 3,158,400원",
+    "pass": true
+  },
+  {
+    "name": "위약금 차감 −52,000원",
+    "pass": true
+  },
+  {
+    "name": "환불 예정액 3,106,400 · 라벨 · accent",
+    "pass": true
+  },
+  {
+    "name": "3,158,400 − 52,000 = 3,106,400",
+    "pass": true
+  },
+  {
+    "name": "기준액 × 2% = 위약금",
+    "pass": true
+  },
+  {
+    "name": "결제 금액과 기준액 라벨 구분",
+    "pass": true
+  },
+  {
+    "name": "하단 버튼 이동 문구",
+    "pass": true
+  },
+  {
+    "name": "레이아웃 이상 없음",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "환불 예정액 첫 화면 노출(참고)",
+    "pass": true,
+    "detail": "스크롤 필요"
+  },
+  {
+    "name": "콘솔 오류 없음",
+    "pass": true,
+    "detail": ""
+  }
+]

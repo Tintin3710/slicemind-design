@@ -1,0 +1,11 @@
+{
+  "fixtureId": "cancellation-refund-demo-v1",
+  "status": "experiment-only",
+  "currency": "KRW",
+  "provenance": "기존 시안의 고정 실험 데이터. 실제 서비스의 확정 취소·위약금 정책이 아님.",
+  "case": {"hoursBeforeStart": 18, "reapplyRestrictionDays": 7},
+  "paidAmount": 3158400,
+  "penaltyBaseAmount": 2600000,
+  "penaltyRatePercent": 2,
+  "expected": {"penalty": 52000, "refund": 3106400}
+}
