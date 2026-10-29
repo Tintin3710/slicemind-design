@@ -20,3 +20,8 @@ original-assets/
 # 제출할 검증 기록은 validation/에 따로 정리
 playwright-report/
 test-results/
+
+# Next.js
+.next/
+next-env.d.ts
+*.tsbuildinfo

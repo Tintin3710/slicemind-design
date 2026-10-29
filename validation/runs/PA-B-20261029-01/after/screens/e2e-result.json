@@ -1,0 +1,504 @@
+[
+  {
+    "id": "S01",
+    "pass": true,
+    "checks": [
+      {
+        "name": "매칭 실패 화면",
+        "pass": true
+      },
+      {
+        "name": "실패 원인 문구",
+        "pass": true
+      },
+      {
+        "name": "다음 경로 버튼",
+        "pass": true
+      },
+      {
+        "name": "금액 조정 화면",
+        "pass": true
+      },
+      {
+        "name": "조정 CTA 문구",
+        "pass": true,
+        "detail": "변경 금액 확인하기"
+      },
+      {
+        "name": "조정 화면에 재신청 버튼 없음",
+        "pass": true
+      },
+      {
+        "name": "최종 확인 화면",
+        "pass": true
+      },
+      {
+        "name": "이동만으로 완료되지 않음",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "id": "S02",
+    "pass": true,
+    "checks": [
+      {
+        "name": "기본 선택 +5%",
+        "pass": true
+      },
+      {
+        "name": "+5% 시각 선택 상태 일치",
+        "pass": true,
+        "detail": "rgb(242, 247, 255),rgb(255, 255, 255),rgb(255, 255, 255)"
+      },
+      {
+        "name": "+5% 평일",
+        "pass": true,
+        "detail": "평일 변경 전 90,000 → 변경 후 94,500원/일 +4,500원"
+      },
+      {
+        "name": "+5% 주말",
+        "pass": true,
+        "detail": "주말·공휴일 변경 전 108,000 → 변경 후 113,400원/일 +5,400원"
+      },
+      {
+        "name": "+5% 증가액",
+        "pass": true,
+        "detail": "4500/5400"
+      },
+      {
+        "name": "+5% 총금액",
+        "pass": true,
+        "detail": "3314820"
+      },
+      {
+        "name": "+5% 현재 선택 표시",
+        "pass": true
+      },
+      {
+        "name": "+5% 선택 시 추천 표시 유지",
+        "pass": true
+      },
+      {
+        "name": "+10% 시각 선택 상태 일치",
+        "pass": true,
+        "detail": "rgb(255, 255, 255),rgb(242, 247, 255),rgb(255, 255, 255)"
+      },
+      {
+        "name": "+10% 평일",
+        "pass": true,
+        "detail": "평일 변경 전 90,000 → 변경 후 99,000원/일 +9,000원"
+      },
+      {
+        "name": "+10% 주말",
+        "pass": true,
+        "detail": "주말·공휴일 변경 전 108,000 → 변경 후 118,800원/일 +10,800원"
+      },
+      {
+        "name": "+10% 증가액",
+        "pass": true,
+        "detail": "9000/10800"
+      },
+      {
+        "name": "+10% 총금액",
+        "pass": true,
+        "detail": "3471240"
+      },
+      {
+        "name": "+10% 현재 선택 표시",
+        "pass": true
+      },
+      {
+        "name": "+10% 선택 시 추천 표시 유지",
+        "pass": true
+      },
+      {
+        "name": "+15% 시각 선택 상태 일치",
+        "pass": true,
+        "detail": "rgb(255, 255, 255),rgb(255, 255, 255),rgb(242, 247, 255)"
+      },
+      {
+        "name": "+15% 평일",
+        "pass": true,
+        "detail": "평일 변경 전 90,000 → 변경 후 103,500원/일 +13,500원"
+      },
+      {
+        "name": "+15% 주말",
+        "pass": true,
+        "detail": "주말·공휴일 변경 전 108,000 → 변경 후 124,200원/일 +16,200원"
+      },
+      {
+        "name": "+15% 증가액",
+        "pass": true,
+        "detail": "13500/16200"
+      },
+      {
+        "name": "+15% 총금액",
+        "pass": true,
+        "detail": "3627660"
+      },
+      {
+        "name": "+15% 현재 선택 표시",
+        "pass": true
+      },
+      {
+        "name": "+15% 선택 시 추천 표시 유지",
+        "pass": true
+      },
+      {
+        "name": "반복 선택해도 누적 적용 없음",
+        "pass": true
+      },
+      {
+        "name": "초기화 → +5%",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "id": "S03",
+    "pass": true,
+    "checks": [
+      {
+        "name": "조정 단계 두 단가 표시",
+        "pass": true
+      },
+      {
+        "name": "조정 단계 총금액 표시",
+        "pass": true
+      },
+      {
+        "name": "조정 단계에 상세 합산 없음(P03)",
+        "pass": true
+      },
+      {
+        "name": "평일 2,079,000",
+        "pass": true,
+        "detail": "2079000"
+      },
+      {
+        "name": "주말 907,200",
+        "pass": true,
+        "detail": "907200"
+      },
+      {
+        "name": "보험료 30,000",
+        "pass": true
+      },
+      {
+        "name": "수수료 298,620",
+        "pass": true,
+        "detail": "298620"
+      },
+      {
+        "name": "총 3,314,820",
+        "pass": true,
+        "detail": "3314820"
+      },
+      {
+        "name": "상세 합 = 총금액",
+        "pass": true
+      },
+      {
+        "name": "적용 비율 표시",
+        "pass": true
+      },
+      {
+        "name": "간병비 합계 2,986,200",
+        "pass": true
+      },
+      {
+        "name": "총금액 라벨(P05)",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "id": "S04",
+    "pass": true,
+    "checks": [
+      {
+        "name": "확정 버튼 금액",
+        "pass": true,
+        "detail": "3,471,240원으로 재신청하기"
+      },
+      {
+        "name": "완료 문구",
+        "pass": true
+      },
+      {
+        "name": "완료 금액 = 확정 버튼 금액",
+        "pass": true
+      },
+      {
+        "name": "확정 버튼 비활성화",
+        "pass": true
+      },
+      {
+        "name": "완료 후 버튼 금액 유지",
+        "pass": true
+      },
+      {
+        "name": "중복 적용 없음(신청 금액)",
+        "pass": true
+      },
+      {
+        "name": "신청 상태 재신청 완료",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "id": "S05",
+    "pass": true,
+    "checks": [
+      {
+        "name": "뒤로 → 금액 조정",
+        "pass": true
+      },
+      {
+        "name": "+15% 유지",
+        "pass": true
+      },
+      {
+        "name": "조정 총금액 유지",
+        "pass": true
+      },
+      {
+        "name": "재검토 동일 금액",
+        "pass": true
+      },
+      {
+        "name": "완료되지 않음",
+        "pass": true
+      },
+      {
+        "name": "조정 → 뒤로 → 매칭 실패",
+        "pass": true
+      },
+      {
+        "name": "매칭 실패 경유 후에도 +15% 유지",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "id": "S06",
+    "pass": true,
+    "checks": [
+      {
+        "name": "헤더 X → 진입 전 화면",
+        "pass": true
+      },
+      {
+        "name": "신청 금액 3,158,400 유지",
+        "pass": true
+      },
+      {
+        "name": "새 세션 +5%",
+        "pass": true
+      },
+      {
+        "name": "확인 화면에서 닫아도 3,158,400 유지",
+        "pass": true
+      },
+      {
+        "name": "매칭 실패 하단 닫기 → 진입 전 화면",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "id": "S07",
+    "pass": true,
+    "checks": [
+      {
+        "name": "390 실패 레이아웃",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "390 인상률 선택 첫 화면 노출",
+        "pass": true,
+        "detail": "{\"x\":16,\"y\":206.5,\"width\":358,\"height\":135.5}"
+      },
+      {
+        "name": "390 선택 UI가 금액보다 위",
+        "pass": true
+      },
+      {
+        "name": "390 조정 레이아웃",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "390 확인 레이아웃",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "390 스크롤 끝 상세가 버튼에 가려지지 않음",
+        "pass": true
+      },
+      {
+        "name": "390-text200 실패 레이아웃",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "390-text200 선택 UI가 금액보다 위",
+        "pass": true
+      },
+      {
+        "name": "390-text200 조정 레이아웃",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "390-text200 확인 레이아웃",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "390-text200 스크롤 끝 상세가 버튼에 가려지지 않음",
+        "pass": true
+      },
+      {
+        "name": "360 실패 레이아웃",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "360 인상률 선택 첫 화면 노출",
+        "pass": true,
+        "detail": "{\"x\":16,\"y\":206.5,\"width\":328,\"height\":135.5}"
+      },
+      {
+        "name": "360 선택 UI가 금액보다 위",
+        "pass": true
+      },
+      {
+        "name": "360 조정 레이아웃",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "360 확인 레이아웃",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "360 스크롤 끝 상세가 버튼에 가려지지 않음",
+        "pass": true
+      },
+      {
+        "name": "360-text200 실패 레이아웃",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "360-text200 선택 UI가 금액보다 위",
+        "pass": true
+      },
+      {
+        "name": "360-text200 조정 레이아웃",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "360-text200 확인 레이아웃",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "360-text200 스크롤 끝 상세가 버튼에 가려지지 않음",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "id": "S08",
+    "pass": true,
+    "checks": [
+      {
+        "name": "Tab → 매칭 결과 보기",
+        "pass": true
+      },
+      {
+        "name": "Tab → 금액 조정하기",
+        "pass": true
+      },
+      {
+        "name": "포커스 표시(실패 화면 버튼)",
+        "pass": true
+      },
+      {
+        "name": "Tab → +10% 추천",
+        "pass": true
+      },
+      {
+        "name": "포커스 표시(인상률)",
+        "pass": true
+      },
+      {
+        "name": "키보드로 +10% 선택",
+        "pass": true
+      },
+      {
+        "name": "선택 상태 aria-pressed 제공",
+        "pass": true
+      },
+      {
+        "name": "그룹 이름 제공",
+        "pass": true
+      },
+      {
+        "name": "Tab → 변경 금액 확인하기",
+        "pass": true
+      },
+      {
+        "name": "확인 화면 도달",
+        "pass": true
+      },
+      {
+        "name": "Tab → 뒤로 가기",
+        "pass": true
+      },
+      {
+        "name": "포커스 표시(뒤로 가기)",
+        "pass": true
+      },
+      {
+        "name": "키보드 뒤로 → +10% 유지",
+        "pass": true
+      },
+      {
+        "name": "Tab → 확정 버튼",
+        "pass": true
+      },
+      {
+        "name": "포커스 표시(확정)",
+        "pass": true
+      },
+      {
+        "name": "키보드 확정 완료",
+        "pass": true
+      },
+      {
+        "name": "완료 안내 role=status",
+        "pass": true
+      }
+    ]
+  },
+  {
+    "id": "console",
+    "pass": true,
+    "checks": [
+      {
+        "name": "콘솔 오류 없음",
+        "pass": true,
+        "detail": ""
+      }
+    ]
+  }
+]
