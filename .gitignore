@@ -1,0 +1,22 @@
+# 인증정보·로컬 환경
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+
+# 의존성·빌드
+node_modules/
+dist/
+build/
+coverage/
+*.log
+
+# 원본 업무 자료는 자동으로 업로드하지 않음
+private-reference/
+original-assets/
+
+# 제출할 검증 기록은 validation/에 따로 정리
+playwright-report/
+test-results/

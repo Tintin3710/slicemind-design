@@ -1,0 +1,24 @@
+{
+  "fixtureId": "care-price-demo-v1",
+  "status": "experiment-only",
+  "currency": "KRW",
+  "provenance": {
+    "ratesAndFivePercentExample": "사용자가 제공한 최종 시안의 예시 금액",
+    "feeFormula": "수수료 10%는 예시를 재현하기 위한 실험 가정이며 실제 서비스 정책으로 확인되지 않음",
+    "personalData": "실사용자 정보 없음"
+  },
+  "days": {"weekday": 22, "weekendAndHoliday": 8},
+  "baseUnitRates": {"weekday": 90000, "weekendAndHoliday": 108000},
+  "insuranceTotal": 30000,
+  "experimentFeeRate": 0.1,
+  "defaultIncreasePercent": 5,
+  "selectableIncreasePercents": [5, 10, 15],
+  "resetIncreasePercent": 5,
+  "rounding": "단가 적용 결과와 수수료를 각각 원 단위 반올림. 이번 예시에서는 소수 금액이 발생하지 않음.",
+  "expected": [
+    {"increasePercent": 0, "weekdayUnit": 90000, "weekendUnit": 108000, "weekdayDelta": 0, "weekendDelta": 0, "weekdaySubtotal": 1980000, "weekendSubtotal": 864000, "careSubtotal": 2844000, "platformFee": 284400, "insurance": 30000, "total": 3158400, "totalDelta": 0},
+    {"increasePercent": 5, "weekdayUnit": 94500, "weekendUnit": 113400, "weekdayDelta": 4500, "weekendDelta": 5400, "weekdaySubtotal": 2079000, "weekendSubtotal": 907200, "careSubtotal": 2986200, "platformFee": 298620, "insurance": 30000, "total": 3314820, "totalDelta": 156420},
+    {"increasePercent": 10, "weekdayUnit": 99000, "weekendUnit": 118800, "weekdayDelta": 9000, "weekendDelta": 10800, "weekdaySubtotal": 2178000, "weekendSubtotal": 950400, "careSubtotal": 3128400, "platformFee": 312840, "insurance": 30000, "total": 3471240, "totalDelta": 312840},
+    {"increasePercent": 15, "weekdayUnit": 103500, "weekendUnit": 124200, "weekdayDelta": 13500, "weekendDelta": 16200, "weekdaySubtotal": 2277000, "weekendSubtotal": 993600, "careSubtotal": 3270600, "platformFee": 327060, "insurance": 30000, "total": 3627660, "totalDelta": 469260}
+  ]
+}
