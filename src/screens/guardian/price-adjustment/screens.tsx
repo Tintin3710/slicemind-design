@@ -3,7 +3,8 @@ import { semantic } from '@/design-system/token-bridge';
 import { AmountSummary } from '@/design-system/AmountSummary';
 import { PriceChangeRow } from '@/design-system/PriceChangeRow';
 import { SegmentedRow } from '@/shared/ui/SegmentedRow';
-import { formatKRW, priceConfig, type IncreasePercent, type PriceBreakdown } from '@/features/price-adjustment/calculate';
+import { priceConfig, type IncreasePercent, type PriceBreakdown } from '@/features/price-adjustment/calculate';
+import { formatKRW } from '@/shared/lib/format-krw';
 import { ScreenLayout } from './ScreenLayout';
 
 const t = designTokens.typography;
@@ -194,19 +195,17 @@ export function ReviewScreen(props: {
                     disabled={completed !== null}
                     data-testid="confirm-button"
                 >
-                    {formatKRW(price.total)}원으로 재신청하기
+                    {completed ? '재신청 완료' : `${formatKRW(price.total)}원으로 재신청하기`}
                 </button>
             }
         >
             <div className={semantic.space.section}>
                 <h2 className={cn(t.h2, semantic.text.primary)}>변경된 금액을 확인해 주세요.</h2>
 
+                {/* 완료 안내는 한 번만. 금액은 아래 AmountSummary ‘적용 금액’이 담당한다 (P07). */}
                 {completed && (
                     <div role="status" data-testid="completion" className={cn('flex flex-col gap-1 border p-4', semantic.radius.card, designTokens.colors.primaryBorder, designTokens.colors.primaryBgLight)}>
                         <p className={cn(t.bodyBold, semantic.text.accent)}>재신청이 완료됐어요.</p>
-                        <p className={cn(t['15medium'], semantic.text.primary)}>
-                            적용 금액 <strong className="tabular-nums" data-testid="completion-amount" data-amount={completed.total}>{formatKRW(completed.total)}원</strong>
-                        </p>
                         <p className={cn(t['13'], semantic.text.secondary)}>데모 상태예요. 실제 결제·지원자 모집은 진행되지 않아요.</p>
                     </div>
                 )}
@@ -220,7 +219,11 @@ export function ReviewScreen(props: {
                         <PriceChangeRow label="평일" before={price.weekdayBaseUnit} after={price.weekdayUnit} unitLabel="원/일" testId="review-weekday" />
                         <PriceChangeRow label="주말·공휴일" before={price.weekendBaseUnit} after={price.weekendUnit} unitLabel="원/일" testId="review-weekend" />
                     </div>
-                    <AmountSummary label="예상 결제 금액" amount={price.total} testId="review-total" />
+                    <AmountSummary
+                        label={completed ? '적용 금액' : '예상 결제 금액'}
+                        amount={completed ? completed.total : price.total}
+                        testId="review-total"
+                    />
                 </div>
 
                 <section aria-labelledby="detail-heading" className="flex flex-col gap-2">

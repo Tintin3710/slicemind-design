@@ -14,8 +14,10 @@
 
 | 역할 | 파일 | 현재 상태 |
 |---|---|---|
-| 라벨과 총금액 | [AmountSummary](../src/design-system/AmountSummary.tsx) | `AmountSummary@1.0.0` 구현. props `label`·`amount`·`emphasis`(+`description`·`testId`). 사용: 금액 조정·최종 확인·진입 화면 (`screens.tsx`). `critical`은 렌더링 미검증 |
-| 변경 전후 단가 | [PriceChangeRow](../src/design-system/PriceChangeRow.tsx) | `PriceChangeRow@1.0.0` 구현. props `label`·`before`·`after`·`unitLabel`(+`delta`·`testId`). 사용: 금액 조정·최종 확인 |
+| 라벨과 총금액 | [AmountSummary](../src/design-system/AmountSummary.tsx) | `AmountSummary@2.0.0`. props `label`·`amount`·`emphasis`(`default`·`accent`·`negative`·`neutral`)·`noneLabel`(+`description`·`testId`). v1의 `critical`은 `negative`로 대체. 사용: 금액 조정·최종 확인·진입 화면 |
+| 변경 전후 단가 | [PriceChangeRow](../src/design-system/PriceChangeRow.tsx) | `PriceChangeRow@1.1.0`. props `label`·`before`·`after`·`unitLabel`(+`delta`·`testId`). 사용: 금액 조정·최종 확인 |
+| 금액 상태 표시 | [StatusBadge](../src/design-system/StatusBadge.tsx) | `StatusBadge@1.0.0`. props `label`·`tone`(`negative`·`neutral`·`accent`). 간병비 화면에서는 미사용, 개발용 `/dev/amount-roles`에서 렌더링 확인 |
+| 원화 표시 | [format-krw.ts](../src/shared/lib/format-krw.ts) | `format-krw@1.0.0`. 공통 UI는 이 파일만 사용하고 기능 계산 파일(`src/features/**`)을 import하지 않는다 |
 | 인상률 선택 | [SegmentedRow](../src/shared/ui/SegmentedRow.tsx) | 실제 코드 dongdong-client@`429894d` 사본에 `aria-pressed`·그룹 이름·포커스 링·배지만 추가 (`1.1.0-adapted`) |
 
 토큰 경로(구현됨): 화면·컴포넌트 → [token-bridge.ts](../src/design-system/token-bridge.ts)(tokens.json 의미 이름) → [design-tokens.ts](../src/shared/config/design-tokens.ts)(실제 코드 Tailwind 클래스 사본). 검증 근거는 [PA-B-20261029-01](../validation/runs/PA-B-20261029-01/run.md).
@@ -29,7 +31,9 @@
 | color.text.primary | #24262B | colors.textPrimary `text-gray-900` | #111827 | 실제 값 |
 | color.text.secondary | #60656F | colors.textSecondary `text-gray-600` | #4B5563 | 실제 값 |
 | color.text.accent / action.primary | #0066FF | colors.primary / button.primary | #0066FF | 일치 |
-| color.text.critical | #C42A30 | 대응 없음 | — | 제안값(미확인) |
+| color.text.critical | #C42A30(제안값) | 대응 없음 | — | **사용 중단.** 역할을 아래 status negative로 대체 |
+| (사용자 지정) color-semantic-status-negative | — | 이 이름의 정의 없음. 가장 가까운 정의는 `theme.ts` `palette.error.main` | #EF4444 | **값 미확인.** CSS 변수 `--color-semantic-status-negative`(`src/app/globals.css`)에 임시 후보로 넣음. 정의가 확인되면 이 한 줄만 교체 |
+| (역할) neutral ‘없음’ | — | colors.textPrimary / grayBorder | #111827 / #E5E7EB | 실제 값 |
 | color.text.onAction | #FFFFFF | button.primary `text-white` | #FFFFFF | 일치 |
 | color.surface.default | #FFFFFF | container.content `bg-white` | #FFFFFF | 일치 |
 | color.surface.subtle | #F5F7FA | colors.primaryBgLight (가장 가까운 카드 배경) | #F2F7FF | 실제 값, 의미 차이 있음 |

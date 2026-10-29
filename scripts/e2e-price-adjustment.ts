@@ -2,6 +2,7 @@
  * validation/price-adjustment.md S01~S08 브라우저 검증 + 화면 캡처.
  * 설치된 Chrome을 playwright-core로 구동한다(브라우저 다운로드 없음).
  *   사용: BASE_URL=http://localhost:3100 OUT=validation/runs/<id>/after npx tsx scripts/e2e-price-adjustment.ts
+ *   SHOTS=이름1,이름2 를 주면 해당 캡처만 저장한다(검사는 모두 실행).
  */
 import { chromium, type Page } from 'playwright-core';
 import fs from 'node:fs';
@@ -36,7 +37,9 @@ async function rowValues(page: Page, testId: string) {
     };
 }
 const screenId = (page: Page) => page.locator('[data-screen]').getAttribute('data-screen');
+const SHOTS = process.env.SHOTS ? new Set(process.env.SHOTS.split(',')) : null;
 async function shot(page: Page, name: string) {
+    if (SHOTS && !SHOTS.has(name)) return;
     await page.screenshot({ path: path.join(OUT, `${name}.png`), fullPage: false });
 }
 async function gotoAdjust(page: Page) {
@@ -167,14 +170,22 @@ async function run() {
     await page.getByRole('button', { name: '변경 금액 확인하기' }).click();
     const confirm = page.getByTestId('confirm-button');
     check('확정 버튼 금액', (await confirm.innerText()).trim() === '3,471,240원으로 재신청하기', await confirm.innerText());
+    check('확정 전 라벨 예상 결제 금액', (await page.getByTestId('review-total').locator('[data-label]').innerText()) === '예상 결제 금액');
     await shot(page, '390-07-review-10');
     // 중복 클릭: 비활성화 전에 연속 클릭 이벤트 발생
     await confirm.evaluate((b: HTMLButtonElement) => { b.click(); b.click(); b.click(); });
     await page.waitForTimeout(100);
     check('완료 문구', await page.getByText('재신청이 완료됐어요.').isVisible());
-    check('완료 금액 = 확정 버튼 금액', (await amountOf(page, 'completion')) === 3471240);
+    // 2026-10-29 명세 변경(R06·P07 v2): 완료 금액은 AmountSummary ‘적용 금액’ 한 곳, 버튼은 ‘재신청 완료’
+    check('완료 문구 1회', (await page.getByText('재신청이 완료됐어요.').count()) === 1);
+    check('확정 후 라벨 적용 금액', (await page.getByTestId('review-total').locator('[data-label]').innerText()) === '적용 금액');
+    check('적용 금액 = 확정 전 버튼 금액', (await amountOf(page, 'review-total')) === 3471240);
+    check('완료 금액 중복 표시 없음', (await page.getByText('3,471,240원').count()) === 1, String(await page.getByText('3,471,240원').count()));
     check('확정 버튼 비활성화', await confirm.isDisabled());
-    check('완료 후 버튼 금액 유지', (await confirm.innerText()).includes('3,471,240'));
+    check('완료 후 버튼 문구 재신청 완료', (await confirm.innerText()).trim() === '재신청 완료', await confirm.innerText());
+    check('완료 후 뒤로 가기 숨김', (await page.getByRole('button', { name: '뒤로 가기' }).count()) === 0);
+    const doneIssues = await layoutIssues(page);
+    check('완료 화면 레이아웃', doneIssues.length === 0, doneIssues.join('; '));
     await shot(page, '390-08-completed');
     await page.getByRole('button', { name: '닫기' }).click();
     check('중복 적용 없음(신청 금액)', (await amountOf(page, 'application-total')) === 3471240);
@@ -296,6 +307,33 @@ async function run() {
     await page.keyboard.press('Enter');
     check('키보드 확정 완료', await page.getByText('재신청이 완료됐어요.').isVisible());
     check('완료 안내 role=status', (await page.getByRole('status').count()) === 1);
+
+    // ---- S09 (자동 부분): 공통 UI 독립성 + 강조 역할 렌더링
+    start('S09');
+    const walk = (dir: string): string[] => fs.readdirSync(dir, { withFileTypes: true })
+        .flatMap((d) => d.isDirectory() ? walk(path.join(dir, d.name)) : [path.join(dir, d.name)]);
+    const sharedFiles = [...walk('src/design-system'), ...walk('src/shared')].filter((f) => /\.tsx?$/.test(f));
+    const offenders = sharedFiles.filter((f) => /from ['"]@\/features\//.test(fs.readFileSync(f, 'utf8')));
+    check('공통 UI가 기능 계산 파일을 import하지 않음', offenders.length === 0, offenders.join(','));
+    const screenSrc = fs.readFileSync('src/screens/guardian/price-adjustment/screens.tsx', 'utf8');
+    check('조정·확인 화면이 공통 컴포넌트 import', /from '@\/design-system\/AmountSummary'/.test(screenSrc) && /from '@\/design-system\/PriceChangeRow'/.test(screenSrc));
+    await page.goto(`${BASE}/dev/amount-roles`);
+    const role = (id: string) => page.getByTestId(id).evaluate((el) => ({
+        emphasis: el.getAttribute('data-emphasis') ?? el.getAttribute('data-tone'),
+        label: (el.querySelector('[data-label]') as HTMLElement | null)?.innerText ?? (el as HTMLElement).innerText,
+        value: (el.querySelector('[data-amount]') as HTMLElement | null)?.innerText ?? '',
+        color: getComputedStyle((el.querySelector('[data-amount]') as HTMLElement | null) ?? el).color,
+    }));
+    const negVar = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--color-semantic-status-negative').trim());
+    const toRgb = (hex: string) => { const n = parseInt(hex.replace('#', ''), 16); return `rgb(${n >> 16 & 255}, ${n >> 8 & 255}, ${n & 255})`; };
+    const acc = await role('role-accent'), neg = await role('role-negative'), none = await role('role-none');
+    const bNeg = await role('badge-negative'), bNeu = await role('badge-neutral');
+    check('환불 예정액 accent + 라벨', acc.emphasis === 'accent' && acc.label === '환불 예정액' && acc.color === 'rgb(0, 102, 255)', JSON.stringify(acc));
+    check('위약금 negative = CSS 변수 색 + 라벨', neg.emphasis === 'negative' && neg.label === '위약금' && !!negVar && neg.color === toRgb(negVar), JSON.stringify({ ...neg, negVar }));
+    check('위약금 발생 배지 negative + 라벨', bNeg.emphasis === 'negative' && bNeg.label === '위약금 발생' && bNeg.color === toRgb(negVar), JSON.stringify(bNeg));
+    check('위약금 없음: neutral + ‘없음’', none.emphasis === 'neutral' && none.value === '없음' && none.color === 'rgb(17, 24, 39)', JSON.stringify(none));
+    check('위약금 없음 배지 neutral', bNeu.emphasis === 'neutral' && bNeu.color === 'rgb(17, 24, 39)', JSON.stringify(bNeu));
+    await shot(page, '390-11-amount-roles');
 
     start('console');
     check('콘솔 오류 없음', consoleErrors.length === 0, consoleErrors.join(' | '));

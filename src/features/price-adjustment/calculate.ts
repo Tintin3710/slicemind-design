@@ -80,7 +80,3 @@ export const priceConfig = {
     recommendedIncreasePercent: 10 as IncreasePercent,
     originalTotal: calculateCarePrice(0).total,
 };
-
-export function formatKRW(amount: number): string {
-    return amount.toLocaleString('ko-KR');
-}

@@ -7,7 +7,7 @@
  */
 import { designTokens } from '@/shared/config/design-tokens';
 
-export const TOKEN_BRIDGE_VERSION = 'token-bridge@1.1.0';
+export const TOKEN_BRIDGE_VERSION = 'token-bridge@1.2.0';
 
 export const semantic = {
     text: {
@@ -17,8 +17,18 @@ export const semantic = {
         secondary: designTokens.colors.textSecondary,
         /** tokens.json color.text.accent(#0066FF) → 실제 primary(#0066FF), 값 일치 */
         accent: designTokens.colors.primary,
-        /** tokens.json color.text.critical(#C42A30): 실제 코드에 대응 없음 → 제안값 사용 */
-        critical: 'text-[#C42A30]',
+    },
+    /**
+     * 금액 강조 역할 (patterns.md ‘금액 강조 역할’). 색은 라벨의 보조로만 쓴다.
+     * negative는 사용자 지정 토큰 color-semantic-status-negative를 CSS 변수로 참조한다.
+     * 변수 값은 src/app/globals.css 한 곳에서 정한다(현재 값 미확인, 임시 후보).
+     * 이전 tokens.json color.text.critical(#C42A30, 제안값)은 이 역할로 대체했고 사용하지 않는다.
+     */
+    status: {
+        negativeText: 'text-[color:var(--color-semantic-status-negative)]',
+        negativeBorder: 'border-[color:var(--color-semantic-status-negative)]',
+        neutralText: designTokens.colors.textPrimary,
+        neutralBorder: designTokens.colors.grayBorder,
     },
     border: {
         /** tokens.json color.border.default(#E1E4E9) → 실제 grayBorder(#E5E7EB) */
@@ -65,4 +75,4 @@ export const semantic = {
     },
 } as const;
 
-export const proposalOnly = ['text.critical', 'action.focusRing', 'badge.recommended(size)'] as const;
+export const proposalOnly = ['status.negative(value unconfirmed)', 'action.focusRing', 'badge.recommended(size)'] as const;

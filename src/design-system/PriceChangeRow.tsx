@@ -4,16 +4,16 @@
  */
 import { cn } from '@/shared/config/design-tokens';
 import { semantic } from '@/design-system/token-bridge';
-import { formatKRW } from '@/features/price-adjustment/calculate';
+import { formatKRW } from '@/shared/lib/format-krw';
 
-export const PRICE_CHANGE_ROW_VERSION = 'PriceChangeRow@1.0.0';
+export const PRICE_CHANGE_ROW_VERSION = 'PriceChangeRow@1.1.0';
 
 export type PriceChangeRowProps = {
   label: string;
   before: number; // KRW 정수
   after: number; // KRW 정수. 인상률 계산은 이 컴포넌트에서 수행하지 않습니다.
   unitLabel?: string; // 예: 원/일
-  /** 증가액. 계산 결과를 그대로 받는다. 없으면 표시하지 않는다. */
+  /** 변경액. 계산 결과를 그대로 받는다. 부호는 표시용으로만 붙인다. 없으면 표시하지 않는다. */
   delta?: number;
   testId?: string;
 };
@@ -37,7 +37,7 @@ export function PriceChangeRow({ label, before, after, unitLabel = '원', delta,
         </p>
         {delta !== undefined && (
           <span className={cn('text-[13px] font-medium tabular-nums', semantic.text.accent)} data-delta={delta}>
-            +{formatKRW(delta)}원
+            {delta < 0 ? '−' : '+'}{formatKRW(Math.abs(delta))}원
           </span>
         )}
       </div>

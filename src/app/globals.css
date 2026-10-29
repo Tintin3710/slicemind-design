@@ -2,5 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * 사용자 지정 토큰 color-semantic-status-negative
+ * 값 미확인: 저장소와 dongdong-client@429894d에서 이 이름의 정의를 찾지 못했다.
+ * 아래 값은 임시 대응 후보(dongdong-client theme.ts palette.error.main)이며 확인된 값이 아니다.
+ * 정의가 확인되면 이 한 줄만 교체한다. 이전 제안색 #C42A30은 사용하지 않는다.
+ */
+:root {
+    --color-semantic-status-negative: #EF4444;
+}
+
 html, body { -webkit-text-size-adjust: 100%; }
 body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
