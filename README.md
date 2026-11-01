@@ -6,10 +6,11 @@
 
 - 2026-10-29: 파일 구조와 간병비 조정 재현 실험의 기준을 준비했습니다.
 - 공통 패턴과 토큰은 사후 정리한 실험용 초안입니다. 기존 회사의 공식 DS로 확인된 자료가 아닙니다.
-- 매칭·취소 문서는 후속 작업을 위한 골격입니다.
+- 매칭 문서는 후속 작업을 위한 골격입니다. 취소 문서는 골격과 환불 안내 1개 화면 실험 범위를 담고 있습니다.
 - 2026-10-29: 간병비 조정 프로토타입과 `AmountSummary`·`PriceChangeRow`를 구현했습니다. 배포는 없습니다.
 - 2026-10-29: 환불 재사용에 대비해 공통 패턴을 v2로 일반화하고 금액 강조 역할·완료 상태를 보완했습니다([PA-B-20261029-02](validation/runs/PA-B-20261029-02/run.md)).
 - 브라우저 자동 검증은 [PA-B-20261029-01](validation/runs/PA-B-20261029-01/run.md)·[02](validation/runs/PA-B-20261029-02/run.md)에서 통과했습니다. 실기기·사용자 검증은 미실행입니다. 실제 결제·환불·지원자 모집을 수행하지 않습니다.
+- 2026-10-29: 공통 패턴 v2.1을 환불 안내([RF-B-20261029-01](validation/runs/RF-B-20261029-01/run.md))와 결제 정보([PY-B-20261029-01](validation/runs/PY-B-20261029-01/run.md)) 시안 생성에 재사용해 검수했습니다. 적용 현황과 한계는 [patterns](docs/patterns.md#적용-현황)에 있습니다(v2.2, 2026-11-01).
 
 ## 문서 찾기
 
@@ -21,6 +22,7 @@
 | 지원자 비교·선택 | [matching](docs/features/matching.md) |
 | 금액 조정·확인·재신청 | [price-adjustment](docs/features/price-adjustment.md) |
 | 취소·위약금·환불 안내 | [cancellation](docs/features/cancellation.md) |
+| 결제 정보·비용 상세 | [payment](docs/features/payment.md) |
 | 간병비 조정 실행 기록 | [validation](validation/price-adjustment.md) |
 
 ## 주요 구조
@@ -36,6 +38,7 @@ docs/
     matching.md
     price-adjustment.md
     cancellation.md
+    payment.md
 src/
   design-system/
     tokens.json
@@ -65,5 +68,7 @@ npm install && npm run build && npm start   # http://localhost:3100
 npm run verify:calc                          # fixture 기대값 비교
 npm run verify:e2e                           # 서버 실행 중, 설치된 Chrome으로 S01~S08
 ```
+
+다른 화면: `/cancellation`(환불 안내), `/payment`(결제 정보). 검증 스크립트 `scripts/e2e-refund-notice.ts`, `scripts/e2e-payment.ts`.
 
 실행 기록: [PA-B-20261029-01](validation/runs/PA-B-20261029-01/run.md). 프로토타입 코드는 실제 제품(dongdong-client)에 반영되지 않았습니다.
