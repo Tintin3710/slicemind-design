@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * 사용자 지정 토큰 color-semantic-status-negative
+ * = dongdong-client@429894d src/shared/config/theme.ts palette.error.main (#EF4444)
+ * 2026-10-29 사용자(디자이너) 지정으로 대응 확정. 이전 제안색 #C42A30은 사용하지 않는다.
+ */
+:root {
+    --color-semantic-status-negative: #EF4444;
+}
+
+html, body { -webkit-text-size-adjust: 100%; }
+body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }

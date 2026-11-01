@@ -1,0 +1,11 @@
+PASS S01
+PASS S02
+PASS S03
+FAIL S04
+   ✗ 완료 금액 = 확정 버튼 금액 
+   ✗ 완료 후 버튼 금액 유지 
+PASS S05
+PASS S06
+PASS S07
+PASS S08
+PASS console

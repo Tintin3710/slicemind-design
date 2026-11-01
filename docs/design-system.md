@@ -14,12 +14,35 @@
 
 | 역할 | 파일 | 현재 상태 |
 |---|---|---|
-| 라벨과 총금액 | [AmountSummary](../src/design-system/AmountSummary.tsx) | props 계약 초안만 있음, 렌더링 구현 없음 |
-| 변경 전후 단가 | [PriceChangeRow](../src/design-system/PriceChangeRow.tsx) | props 계약 초안만 있음, 렌더링 구현 없음 |
+| 라벨과 총금액 | [AmountSummary](../src/design-system/AmountSummary.tsx) | `AmountSummary@2.0.0`. props `label`·`amount`·`emphasis`(`default`·`accent`·`negative`·`neutral`)·`noneLabel`(+`description`·`testId`). v1의 `critical`은 `negative`로 대체. 사용: 간병비 금액 조정·최종 확인·진입 화면, 환불 안내(위약금·환불 예정액), 결제 비용 상세 |
+| 변경 전후 단가 | [PriceChangeRow](../src/design-system/PriceChangeRow.tsx) | `PriceChangeRow@1.1.0`. props `label`·`before`·`after`·`unitLabel`(+`delta`·`testId`). 사용: 금액 조정·최종 확인 |
+| 금액 상태 표시 | [StatusBadge](../src/design-system/StatusBadge.tsx) | `StatusBadge@1.0.0`. props `label`·`tone`(`negative`·`neutral`·`accent`). 사용: 환불 안내 ‘위약금 발생’, 개발용 `/dev/amount-roles`. 간병비·결제 화면에서는 미사용 |
+| 원화 표시 | [format-krw.ts](../src/shared/lib/format-krw.ts) | `format-krw@1.0.0`. 공통 UI는 이 파일만 사용하고 기능 계산 파일(`src/features/**`)을 import하지 않는다 |
+| 인상률 선택 | [SegmentedRow](../src/shared/ui/SegmentedRow.tsx) | 실제 코드 dongdong-client@`429894d` 사본에 `aria-pressed`·그룹 이름·포커스 링·배지만 추가 (`1.1.0-adapted`) |
 
-예정 연결: `color.text.accent` → CSS 변수 또는 테마 → 강조 합계. 이름을 문서에 적은 것과 코드에서 사용하는 것은 구분한다.
+토큰 경로(구현됨): 화면·컴포넌트 → [token-bridge.ts](../src/design-system/token-bridge.ts)(tokens.json 의미 이름) → [design-tokens.ts](../src/shared/config/design-tokens.ts)(실제 코드 Tailwind 클래스 사본). 검증 근거는 [PA-B-20261029-01](../validation/runs/PA-B-20261029-01/run.md).
 
-구현 후 실제 export·props·사용 화면·토큰 경로를 위 표에 추가한다. 같은 컴포넌트를 두 화면이 import·호출하는지 확인해야 재사용 근거가 된다.
+### tokens.json 제안값과 실제 코드의 대응
+
+시각 표현은 실제 코드를 우선한다. 실제 코드에 없는 항목만 제안값을 쓴다.
+
+| tokens.json | 제안값 | 실제 코드(design-tokens.ts) | 실제 값 | 사용 |
+|---|---|---|---|---|
+| color.text.primary | #24262B | colors.textPrimary `text-gray-900` | #111827 | 실제 값 |
+| color.text.secondary | #60656F | colors.textSecondary `text-gray-600` | #4B5563 | 실제 값 |
+| color.text.accent / action.primary | #0066FF | colors.primary / button.primary | #0066FF | 일치 |
+| color.text.critical | #C42A30(제안값) | 대응 없음 | — | **사용 중단.** 역할을 아래 status negative로 대체 |
+| (사용자 지정) color-semantic-status-negative | — | `theme.ts` `palette.error.main` (같은 이름의 정의는 없음) | #EF4444 | **2026-10-29 사용자(디자이너) 지정으로 대응 확정.** CSS 변수 `--color-semantic-status-negative`(`src/app/globals.css`). 흰 배경 대비 3.76:1. 큰 금액 글자(3:1)는 충족, 14px ‘위약금 발생’ 배지 글자는 4.5:1 미달이며 2026-10-29 사용자가 수용한 예외 |
+| (역할) neutral ‘없음’ | — | colors.textPrimary / grayBorder | #111827 / #E5E7EB | 실제 값 |
+| color.text.onAction | #FFFFFF | button.primary `text-white` | #FFFFFF | 일치 |
+| color.surface.default | #FFFFFF | container.content `bg-white` | #FFFFFF | 일치 |
+| color.surface.subtle | #F5F7FA | colors.primaryBgLight (가장 가까운 카드 배경) | #F2F7FF | 실제 값, 의미 차이 있음 |
+| color.border.default | #E1E4E9 | colors.grayBorder | #E5E7EB | 실제 값 |
+| space.related / row / section | 8 / 16 / 24px | layout.formGroup(12)·formGroupXL(24) | — | 8·16은 Tailwind 기본 간격, 24는 formGroupXL |
+| space.pageInline | 20px | container.main `px-4 min-[400px]:px-6` | 16px(<400) / 24px | 실제 값 |
+| radius.control | 12px | button·segmented `rounded-xl` | 12px | 일치 |
+| radius.card | 16px | modal.container `rounded-2xl` (선택 카드는 10px) | 16px | 실제 값 중 선택 |
+| (없음) 포커스 링 | — | 대응 없음 | — | #0066FF 링 제안 |
 
 ## 기본 UI 기준
 

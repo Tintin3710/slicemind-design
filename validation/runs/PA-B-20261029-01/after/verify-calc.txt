@@ -1,0 +1,5 @@
+0%: total 3158400 OK
+5%: total 3314820 OK
+10%: total 3471240 OK
+15%: total 3627660 OK
+ALL PASS

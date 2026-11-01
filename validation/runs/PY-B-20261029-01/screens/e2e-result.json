@@ -1,0 +1,148 @@
+[
+  {
+    "name": "import @/design-system/AmountSummary",
+    "pass": true
+  },
+  {
+    "name": "import @/shared/lib/format-krw",
+    "pass": true
+  },
+  {
+    "name": "import @/design-system/token-bridge",
+    "pass": true
+  },
+  {
+    "name": "import @/features/price-adjustment/calculate",
+    "pass": true
+  },
+  {
+    "name": "import @/screens/guardian/price-adjustment/ScreenLayout",
+    "pass": true
+  },
+  {
+    "name": "calculateCarePrice(0) 한 번 호출",
+    "pass": true
+  },
+  {
+    "name": "화면에 직접 색상값 없음",
+    "pass": true
+  },
+  {
+    "name": "화면에서 금액 산술 없음",
+    "pass": true
+  },
+  {
+    "name": "본문 순서: 환자 → 유형·중증도 → 일정",
+    "pass": true,
+    "detail": "167.5,322.5,477.5"
+  },
+  {
+    "name": "일정 평일 22일·주말 8일",
+    "pass": true
+  },
+  {
+    "name": "하단 결제 예정 금액 3,158,400",
+    "pass": true
+  },
+  {
+    "name": "하단 라벨",
+    "pass": true
+  },
+  {
+    "name": "결제하기 버튼",
+    "pass": true
+  },
+  {
+    "name": "펼치기 aria-expanded=false",
+    "pass": true
+  },
+  {
+    "name": "하단이 본문을 가리지 않음",
+    "pass": true,
+    "detail": "{\"overlap\":false,\"overflowX\":false,\"footerBottom\":844,\"vh\":844}"
+  },
+  {
+    "name": "하단 영역 화면 하단 고정",
+    "pass": true,
+    "detail": "{\"overlap\":false,\"overflowX\":false,\"footerBottom\":844,\"vh\":844}"
+  },
+  {
+    "name": "본문 끝까지 스크롤 시 마지막 항목 보임",
+    "pass": true
+  },
+  {
+    "name": "바텀시트 열림(dialog)",
+    "pass": true
+  },
+  {
+    "name": "펼치기 aria-expanded=true",
+    "pass": true
+  },
+  {
+    "name": "열면 닫기 버튼에 포커스",
+    "pass": true
+  },
+  {
+    "name": "상세 항목 값",
+    "pass": true,
+    "detail": "{\"d-weekday-unit\":\"90,000원\",\"d-weekend-unit\":\"108,000원\",\"d-weekday\":\"1,980,000원\",\"d-weekend\":\"864,000원\",\"d-care\":\"2,844,000원\",\"d-insurance\":\"30,000원\",\"d-fee\":\"284,400원\",\"total\":\"3158400\",\"totalLabel\":\"결제 예정 금액\"}"
+  },
+  {
+    "name": "상세 총액 3,158,400 · 라벨",
+    "pass": true
+  },
+  {
+    "name": "상세 합 = 총액",
+    "pass": true
+  },
+  {
+    "name": "상세 총액이 가려지지 않음",
+    "pass": true,
+    "detail": "{\"totalInView\":true,\"notCovered\":true,\"sheetH\":550,\"vh\":844}"
+  },
+  {
+    "name": "닫기 버튼으로 닫힘",
+    "pass": true
+  },
+  {
+    "name": "닫으면 펼치기 버튼에 포커스",
+    "pass": true
+  },
+  {
+    "name": "닫은 뒤 정보·금액·스크롤 유지",
+    "pass": true,
+    "detail": "{\"patient-name\":\"데모 환자\",\"patient-age\":\"78세 · 여\",\"care-type\":\"병원 상주 간병\",\"care-severity\":\"중등도\",\"schedule-range\":\"2026.11.02(월) ~ 2026.12.01(화)\",\"schedule-total\":\"30일\",\"schedule-weekday\":\"22일\",\"schedule-weekend\":\"8일\",\"footer-total\":\"3,158,400원\",\"scrollTop\":\"0\"}"
+  },
+  {
+    "name": "다시 열어도 상세 값 동일",
+    "pass": true
+  },
+  {
+    "name": "배경 눌러 닫힘",
+    "pass": true
+  },
+  {
+    "name": "Escape로 닫힘",
+    "pass": true
+  },
+  {
+    "name": "여러 번 열고 닫은 뒤에도 유지",
+    "pass": true,
+    "detail": "{\"patient-name\":\"데모 환자\",\"patient-age\":\"78세 · 여\",\"care-type\":\"병원 상주 간병\",\"care-severity\":\"중등도\",\"schedule-range\":\"2026.11.02(월) ~ 2026.12.01(화)\",\"schedule-total\":\"30일\",\"schedule-weekday\":\"22일\",\"schedule-weekend\":\"8일\",\"footer-total\":\"3,158,400원\",\"scrollTop\":\"0\"}"
+  },
+  {
+    "name": "390×600 본문 스크롤 위치 설정",
+    "pass": true,
+    "detail": "120"
+  },
+  {
+    "name": "390×600 열기·닫기·다시 열기 후 스크롤·정보·금액 유지",
+    "pass": true,
+    "detail": "{\"patient-name\":\"데모 환자\",\"patient-age\":\"78세 · 여\",\"care-type\":\"병원 상주 간병\",\"care-severity\":\"중등도\",\"schedule-range\":\"2026.11.02(월) ~ 2026.12.01(화)\",\"schedule-total\":\"30일\",\"schedule-weekday\":\"22일\",\"schedule-weekend\":\"8일\",\"footer-total\":\"3,158,400원\",\"scrollTop\":\"120\"}"
+  },
+  {
+    "name": "콘솔 오류 없음",
+    "pass": true,
+    "detail": ""
+  }
+]
